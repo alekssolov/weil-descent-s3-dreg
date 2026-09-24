@@ -1,0 +1,7 @@
+N=32 D=5 dim(V_D)=221331  products=863967  time=28066s  rows_mem=3.63GB
+  dim(V_5 cap B_<=0) = 0
+  dim(V_5 cap B_<=1) = 1
+  dim(V_5 cap B_<=2) = 57
+  dim(V_5 cap B_<=3) = 1881
+  dim(V_5 cap B_<=4) = 26999
+  dim(V_5 cap B_<=5) = 221331

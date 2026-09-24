@@ -1,0 +1,7 @@
+N=26 D=5 dim(V_D)=81565  products=410410  time=2625s
+  dim(V_5 cap B_<=0) = 0
+  dim(V_5 cap B_<=1) = 1
+  dim(V_5 cap B_<=2) = 45
+  dim(V_5 cap B_<=3) = 1215
+  dim(V_5 cap B_<=4) = 15785
+  dim(V_5 cap B_<=5) = 81565

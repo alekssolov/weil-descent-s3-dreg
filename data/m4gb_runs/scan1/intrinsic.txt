@@ -1,0 +1,1 @@
+n=26 seed=26000 #sol=2 FFD=2 LFD=4 D_solve=4 dims={1: 0, 2: 51, 3: 1651, 4: 17900} time=64s

@@ -1,0 +1,72 @@
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ python3 m4gb_gm_patch.py src/m4gb.hpp
+patched: src/m4gb.hpp (backup in src/m4gb.hpp.orig)
+
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ rm -f src/bin_solver_m4gb-m4gb.o contrib/bin_solver_m4gb-runtime_stats.o
+
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ make bin/solver_m4gb.exe MAXVARS=16 FIELDSIZE=2 2>&1 | grep -iE "error|warning: unused" | head; ls -la bin/solver_m4gb.exe
+g++ -DHAVE_CONFIG_H -I.   -DMAXVARS=16 -DFIELDSIZE=2   -O3 -Wall -Wfatal-errors -march=native -pthread -MT src/bin_solver_m4gb-m4gb.o -MD -MP -MF src/.deps/bin_solver_m4gb-m4gb.Tpo -c -o src/bin_solver_m4gb-m4gb.o `test -f 'src/m4gb.cpp' || echo './'`src/m4gb.cpp
+g++ -DHAVE_CONFIG_H -I.   -DMAXVARS=16 -DFIELDSIZE=2   -O3 -Wall -Wfatal-errors -march=native -pthread -MT contrib/bin_solver_m4gb-runtime_stats.o -MD -MP -MF contrib/.deps/bin_solver_m4gb-runtime_stats.Tpo -c -o contrib/bin_solver_m4gb-runtime_stats.o `test -f 'contrib/runtime_stats.cpp' || echo './'`contrib/runtime_stats.cpp
+/bin/sh ./libtool  --tag=CXX   --mode=link g++  -O3 -Wall -Wfatal-errors -march=native -pthread   -o bin/solver_m4gb.exe src/bin_solver_m4gb-m4gb.o contrib/bin_solver_m4gb-runtime_stats.o
+libtool: link: g++ -O3 -Wall -Wfatal-errors -march=native -o bin/.libs/solver_m4gb.exe src/bin_solver_m4gb-m4gb.o contrib/bin_solver_m4gb-runtime_stats.o  -pthread
+-rwxrwxr-x+ 1 Администратор Отсутствует 27136 Sep 13 15:02 bin/solver_m4gb.exe
+
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ mv bin/solver_m4gb.exe bin/solver_m4gb_n16_gf2_fixed
+
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ for f in m4gb_input_seeds/wd_n12.in m4gb_input_seeds/wd_n14.in m4gb_input_seeds/wd_n16.in; do
+  echo -n "$f: "; ./bin/solver_m4gb_n16_gf2_fixed -s -i $f 2>&1 | grep -E "lcmdegree|#n:" | paste -sd' '
+done
+./bin/solver_m4gb_n16_gf2_fixed -s -i m4gb_input_seeds/wd_n16.in 2>&1 | grep -E "^X" | paste -sd' '
+m4gb_input_seeds/wd_n12.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:11 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n14.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:64 [m4gb]  P lcmdegree=3 [m4gb]  P #n:12 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:76 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+X14 X13 X12 X11 X9 + 1 X8 + X10 + 1 X7 + X15 X6 X5 X4 X3 X2 + X10 + 1 X1 + 1 X0 + X10 X15^2 + X15 X10^2 + X10
+
+Администратор@LargeBitcoinCollider /cygdrive/c/m4gb
+$ for f in m4gb_variants/*.in m4gb_input_seeds/wd_n16_s*.in; do
+  echo -n "$f: "; ./bin/solver_m4gb_n16_gf2_fixed -s -i $f 2>&1 | grep -E "lcmdegree|#n:" | paste -sd' '
+done
+m4gb_variants/wd_n16_aff_0.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_1.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_2.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_3.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:72 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_4.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:70 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_5.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_6.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_7.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_8.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:70 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_aff_9.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_0.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:70 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_1.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:70 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_2.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_3.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:67 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_4.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:75 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_5.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:66 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_6.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:69 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_7.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_8.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_perm_9.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:71 [m4gb]  P lcmdegree=3 [m4gb]  P #n:13 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0 [m4gb]  P lcmdegree=4 [m4gb]  P #n:0
+m4gb_variants/wd_n16_randQ_0.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:75 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_1.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:76 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_2.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:76 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_variants/wd_n16_randQ_3.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_variants/wd_n16_randQ_4.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:73 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_5.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_6.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:74 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_7.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_8.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3
+m4gb_variants/wd_n16_randQ_9.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:74 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s100.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s101.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s102.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3 [m4gb]  P #n:15 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s103.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:76 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s104.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3 [m4gb]  P #n:23 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s105.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3 [m4gb]  P #n:15 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s106.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3 [m4gb]  P #n:20 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s107.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s108.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:81 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0
+m4gb_input_seeds/wd_n16_s109.in: [m4gb]  P lcmdegree=3 [m4gb]  P #n:77 [m4gb]  P lcmdegree=3 [m4gb]  P #n:14 [m4gb]  P lcmdegree=3 [m4gb]  P #n:0

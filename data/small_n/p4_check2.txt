@@ -1,0 +1,3 @@
+N=30 n=24 #sol=68 dimV4=28836 P4=28836 low=2232 3(N+1)n=2232 std4=3095 D_solve=None | Q4=26604 vs C(N,4)=27405 -> generic  (149s)
+N=30 n=25 #sol=39 dimV4=31892 P4=29925 low=4487 3(N+1)n=2325 std4=39 D_solve=4 | Q4=27600 vs C(N,4)=27405 -> collapse  (252s)
+N=28 n=16 #sol=4165 dimV4=16968 P4=16968 low=1392 3(N+1)n=1392 std4=17592 D_solve=None | Q4=15576 vs C(N,4)=20475 -> generic  (41s)

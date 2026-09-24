@@ -1,0 +1,7 @@
+MACAULAY (stage 1) N=32 D=5 dim(V_D)=110953  products=263472  time=22035s  rows_mem=5.70GB
+  dim(V_5 cap B_<=0) = 0
+  dim(V_5 cap B_<=1) = 1
+  dim(V_5 cap B_<=2) = 48
+  dim(V_5 cap B_<=3) = 1520
+  dim(V_5 cap B_<=4) = 20264
+  dim(V_5 cap B_<=5) = 110953

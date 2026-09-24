@@ -1,0 +1,46 @@
+=== n=14 ===
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:64
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:12
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 680 = X13^4
+[m4gb]  total time          : 0.0627281s
+Peak memory    : 9 MiB
+=== n=16 ===
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:76
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:103
+[m4gb]  P lcmdegree=4
+[m4gb]  P #n:13
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 969 = X15^4
+[m4gb]  total time          : 0.0729828s
+Peak memory    : 9 MiB
+=== n=18 ===
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:100
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:109
+[m4gb]  P lcmdegree=4
+[m4gb]  P #n:16
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 1330 = X17^4
+[m4gb]  total time          : 0.111076s
+Peak memory    : 8 MiB
+=== n=20 ===
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:115
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:144
+[m4gb]  P lcmdegree=4
+[m4gb]  P #n:24
+[m4gb]  P lcmdegree=3
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 1771 = X19^4
+[m4gb]  total time          : 0.217927s
+Peak memory    : 7 MiB

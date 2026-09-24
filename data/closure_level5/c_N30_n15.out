@@ -1,0 +1,7 @@
+N=30 D=5 dim(V_D)=144750  products=562500  time=11245s  rows_mem=1.80GB
+  dim(V_5 cap B_<=0) = 0
+  dim(V_5 cap B_<=1) = 1
+  dim(V_5 cap B_<=2) = 45
+  dim(V_5 cap B_<=3) = 1395
+  dim(V_5 cap B_<=4) = 18750
+  dim(V_5 cap B_<=5) = 144750

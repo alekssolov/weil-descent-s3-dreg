@@ -1,0 +1,46 @@
+[parser] loading polynomials from 'm4gb_input_seeds/wd_n16.in' (format: default)
+[m4gb]  I 0 0 31 0
+[m4gb]  U #b:  31 #cp:    76 #mr:   47 #mc:  153 s=0.0007122
+[m4gb]  M #b:  31 #cp:    76 #mr:   47 #mc:  106 s=0.0001017
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  31 #cp:     0 #mr:  557 #mc:  412 s=0.0221927
+[m4gb]  P #n:76
+[m4gb]  U #b: 107 #cp:   633 #mr:  756 #mc:  412 s=0.0077947
+[m4gb]  M #b: 107 #cp:   633 #mr:  756 #mc:  213 s=0.0002143
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b: 107 #cp:   530 #mr:  756 #mc:  213 s=0.016636
+[m4gb]  P #n:103
+[m4gb]  U #b: 210 #cp:  1428 #mr:  859 #mc:  213 s=0.022847
+[m4gb]  M #b: 210 #cp:  1428 #mr:  859 #mc:  110 s=0.0001868
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b: 210 #cp:   916 #mr: 4735 #mc:  110 s=0.0279317
+[m4gb]  P #n:13
+[m4gb]  U #b:  16 #cp:    23 #mr:  681 #mc:  110 s=0.0270745
+[m4gb]  M #b:  16 #cp:    23 #mr:  681 #mc:    4 s=0.0001155
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  16 #cp:     0 #mr:  965 #mc:    4 s=0.0022011
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 969 = X15^4
+[m4gb]  total update time   : 0.0584284s
+[m4gb]  total matrix time   : 0.0006183s
+[m4gb]  total selection time: 0.0689615s
+[m4gb]  total time          : 0.128008s
+X14
+X13
+X12
+X11
+X9 + 1
+X8 + X10 + 1
+X7 + X15
+X6
+X5
+X4
+X3
+X2 + X10 + 1
+X1 + 1
+X0 + X10
+X15^2 + X15
+X10^2 + X10
+Total CPU time : 0.265625 s
+Peak memory    : 9 MiB
+Resource index : 2.39062 s*MiB

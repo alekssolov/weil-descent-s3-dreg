@@ -1,0 +1,189 @@
+[parser] loading polynomials from 'scan2/wd_n34_s34000.in' (format: default)
+[m4gb]  I 0 0 69 0
+[m4gb]  U #b:  69 #cp:   324 #mr:  105 #mc:  703 s=0.0032931
+[m4gb]  M #b:  69 #cp:   324 #mr:  105 #mc:  598 s=0.0002279
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  69 #cp:     0 #mr: 2827 #mc: 6312 s=0.0763558
+[m4gb]  P #n:324
+[m4gb]  U #b: 393 #cp:  5439 #mr: 4014 #mc: 6312 s=0.175258
+[m4gb]  M #b: 393 #cp:  5439 #mr: 4014 #mc: 5125 s=0.001203
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b: 393 #cp:  5077 #mr: 4014 #mc: 5125 s=0.064107
+[m4gb]  P #n:362
+[m4gb]  U #b: 755 #cp: 12352 #mr: 4376 #mc: 5125 s=0.545397
+[m4gb]  M #b: 755 #cp: 12352 #mr: 4376 #mc: 4763 s=0.0014627
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b: 755 #cp: 11840 #mr:65610 #mc:25780 s=3.22659
+[m4gb]  P #n:506
+[m4gb]  U #b:1261 #cp: 24093 #mr:69394 #mc:25780 s=2.12678
+[m4gb]  M #b:1261 #cp: 24093 #mr:69394 #mc:21996 s=0.0057905
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:1261 #cp: 23581 #mr:69394 #mc:21996 s=0.593731
+[m4gb]  P #n:0
+[m4gb]  U #b:1261 #cp: 23581 #mr:69394 #mc:21996 s=8e-07
+[m4gb]  M #b:1261 #cp: 23581 #mr:69394 #mc:21996 s=0.0005127
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:1261 #cp: 23069 #mr:69394 #mc:21996 s=0.643375
+[m4gb]  P #n:0
+[m4gb]  U #b:1261 #cp: 23069 #mr:69394 #mc:21996 s=7e-07
+[m4gb]  M #b:1261 #cp: 23069 #mr:69394 #mc:21996 s=0.0003667
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:1261 #cp: 22557 #mr:69394 #mc:21996 s=0.815481
+[m4gb]  P #n:388
+[m4gb]  U #b:1649 #cp: 32877 #mr:69782 #mc:21996 s=2.3555
+[m4gb]  M #b:1649 #cp: 32877 #mr:69782 #mc:21608 s=0.0007353
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:1649 #cp: 32365 #mr:69782 #mc:21608 s=2.44938
+[m4gb]  P #n:415
+[m4gb]  U #b:2064 #cp: 43552 #mr:70197 #mc:21608 s=4.08343
+[m4gb]  M #b:2064 #cp: 43552 #mr:70197 #mc:21193 s=0.0010251
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:2064 #cp: 43040 #mr:70197 #mc:21193 s=1.417
+[m4gb]  P #n:512
+[m4gb]  U #b:2576 #cp: 56398 #mr:70709 #mc:21193 s=6.82194
+[m4gb]  M #b:2576 #cp: 56398 #mr:70709 #mc:20681 s=0.0012389
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:2576 #cp: 55886 #mr:70709 #mc:20681 s=1.23335
+[m4gb]  P #n:503
+[m4gb]  U #b:3079 #cp: 69802 #mr:71212 #mc:20681 s=10.045
+[m4gb]  M #b:3079 #cp: 69802 #mr:71212 #mc:20178 s=0.0011973
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:3079 #cp: 69290 #mr:71212 #mc:20178 s=5.73952
+[m4gb]  P #n:502
+[m4gb]  U #b:3581 #cp: 83793 #mr:71714 #mc:20178 s=14.7764
+[m4gb]  M #b:3581 #cp: 83793 #mr:71714 #mc:19676 s=0.0009817
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:3581 #cp: 83281 #mr:71714 #mc:19676 s=5.10126
+[m4gb]  P #n:501
+[m4gb]  U #b:4082 #cp: 97810 #mr:72215 #mc:19676 s=21.168
+[m4gb]  M #b:4082 #cp: 97810 #mr:72215 #mc:19175 s=0.0009642
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:4082 #cp: 97298 #mr:72215 #mc:19175 s=5.27259
+[m4gb]  P #n:502
+[m4gb]  U #b:4584 #cp:111990 #mr:72717 #mc:19175 s=21.4083
+[m4gb]  M #b:4584 #cp:111990 #mr:72717 #mc:18673 s=0.0010643
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:4584 #cp:111478 #mr:72717 #mc:18673 s=2.75268
+[m4gb]  P #n:313
+[m4gb]  U #b:4897 #cp:120868 #mr:73030 #mc:18673 s=15.1104
+[m4gb]  M #b:4897 #cp:120868 #mr:73030 #mc:18360 s=0.0192681
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:4897 #cp:120356 #mr:73030 #mc:18360 s=6.00315
+[m4gb]  P #n:511
+[m4gb]  U #b:5408 #cp:135686 #mr:73541 #mc:18360 s=28.1894
+[m4gb]  M #b:5408 #cp:135686 #mr:73541 #mc:17849 s=0.0021836
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:5408 #cp:135174 #mr:73541 #mc:17849 s=6.19619
+[m4gb]  P #n:512
+[m4gb]  U #b:5920 #cp:150552 #mr:74053 #mc:17849 s=23.1648
+[m4gb]  M #b:5920 #cp:150552 #mr:74053 #mc:17337 s=0.0012116
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:5920 #cp:150040 #mr:74053 #mc:17337 s=5.25028
+[m4gb]  P #n:512
+[m4gb]  U #b:6432 #cp:165912 #mr:74565 #mc:17337 s=25.2724
+[m4gb]  M #b:6432 #cp:165912 #mr:74565 #mc:16825 s=0.0011553
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:6432 #cp:165400 #mr:74565 #mc:16825 s=5.61786
+[m4gb]  P #n:488
+[m4gb]  U #b:6920 #cp:180528 #mr:75053 #mc:16825 s=29.1569
+[m4gb]  M #b:6920 #cp:180528 #mr:75053 #mc:16337 s=0.0010108
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:6920 #cp:180016 #mr:75053 #mc:16337 s=9.25033
+[m4gb]  P #n:1184
+[m4gb]  U #b:6876 #cp:187761 #mr:76985 #mc:16337 s=48.7232
+[m4gb]  M #b:6876 #cp:187761 #mr:76985 #mc:14405 s=0.0042749
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:6876 #cp:187249 #mr:76985 #mc:14405 s=14.0533
+[m4gb]  P #n:836
+[m4gb]  U #b:7400 #cp:206880 #mr:78041 #mc:14405 s=62.9377
+[m4gb]  M #b:7400 #cp:206880 #mr:78041 #mc:13349 s=0.0034214
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:7400 #cp:206368 #mr:78041 #mc:13349 s=7.09112
+[m4gb]  P #n:512
+[m4gb]  U #b:7912 #cp:222728 #mr:78553 #mc:13349 s=39.2606
+[m4gb]  M #b:7912 #cp:222728 #mr:78553 #mc:12837 s=0.0005092
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:7912 #cp:222216 #mr:78553 #mc:12837 s=4.45211
+[m4gb]  P #n:504
+[m4gb]  U #b:8368 #cp:237303 #mr:79081 #mc:12837 s=43.9571
+[m4gb]  M #b:8368 #cp:237303 #mr:79081 #mc:12309 s=0.0029581
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:8368 #cp:236791 #mr:79081 #mc:12309 s=4.04826
+[m4gb]  P #n:500
+[m4gb]  U #b:8868 #cp:253291 #mr:79581 #mc:12309 s=53.5686
+[m4gb]  M #b:8868 #cp:253291 #mr:79581 #mc:11809 s=0.0005521
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:8868 #cp:252779 #mr:79581 #mc:11809 s=3.74924
+[m4gb]  P #n:508
+[m4gb]  U #b:9376 #cp:269543 #mr:80089 #mc:11809 s=40.7519
+[m4gb]  M #b:9376 #cp:269543 #mr:80089 #mc:11301 s=0.0005153
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:9376 #cp:269031 #mr:80089 #mc:11301 s=5.47015
+[m4gb]  P #n:650
+[m4gb]  U #b:9578 #cp:277513 #mr:80867 #mc:11301 s=80.1573
+[m4gb]  M #b:9578 #cp:277513 #mr:80867 #mc:10523 s=0.0030223
+[m4gb]  P lcmdegree=4
+[m4gb]  P #b:9578 #cp:277001 #mr:80867 #mc:10523 s=21.6016
+[m4gb]  P #n:33
+[m4gb]  U #b:  39 #cp:  1469 #mr: 4624 #mc: 3336 s=341.372
+[m4gb]  M #b:  39 #cp:  1469 #mr: 4624 #mc:   16 s=0.0015489
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  39 #cp:   957 #mr: 9123 #mc:   16 s=0.0342963
+[m4gb]  P #n:0
+[m4gb]  U #b:  39 #cp:   957 #mr: 4624 #mc:   16 s=0.0019548
+[m4gb]  M #b:  39 #cp:   957 #mr: 4624 #mc:   16 s=6.12e-05
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  39 #cp:   445 #mr: 9123 #mc:   16 s=0.0161782
+[m4gb]  P #n:0
+[m4gb]  U #b:  39 #cp:   445 #mr: 4624 #mc:   16 s=0.0016481
+[m4gb]  M #b:  39 #cp:   445 #mr: 4624 #mc:   16 s=5.29e-05
+[m4gb]  P lcmdegree=3
+[m4gb]  P #b:  39 #cp:     0 #mr: 9123 #mc:   16 s=0.0535379
+[m4gb]  P #n:0
+[m4gb]  upper_bound = 9139 = X35^4
+[m4gb]  total update time   : 915.135s
+[m4gb]  total matrix time   : 0.058516s
+[m4gb]  total selection time: 122.273s
+[m4gb]  total time          : 1037.47s
+X31 + X32 + X33 + 1
+X30 + X32 + X33 + 1
+X28 + X32
+X27 + X33 + 1
+X26 + X32 + X33
+X25 + X29
+X24 + X32
+X23 + X32 + 1
+X22 + X29
+X21 + X32
+X20 + X29 + 1
+X19 + X29 + X33
+X18 + X32 + 1
+X17 + X32 + X33 + 1
+X16 + X33 + 1
+X15 + X29 + X32 + X33
+X14 + X29 + X32
+X13 + X29 + X32
+X12 + X29 + 1
+X11 + X29 + X32 + X33
+X10 + X33
+X9 + X29 + X32 + 1
+X8 + X29 + 1
+X7 + X29 + X32 + X33
+X6 + X29 + X32 + X33 + 1
+X5 + X29 + 1
+X4 + X29 + X32 + X33
+X3 + X29
+X2 + X29 + X33
+X1 + X29 + X32 + X33 + 1
+X0 + X29 + X32
+^2 + 
+^2 + 
+X33^2 + X33
+X33*X32
+X33*X29 + X29 + X32
+X32^2 + X32
+X32*X29 + X32
+X29^2 + X29
+Total CPU time : 1080.89 s
+Peak memory    : 565 MiB
+Resource index : 610703 s*MiB
