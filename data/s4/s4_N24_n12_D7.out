@@ -1,0 +1,10 @@
+N=24 D=7 dim(V_D)=532274  products=809856  time=266587s  rows_mem=0.26GB peak=10.04GB  (rref)
+  dim(V_7 cap B_<=0) = 0
+  dim(V_7 cap B_<=1) = 1
+  dim(V_7 cap B_<=2) = 24
+  dim(V_7 cap B_<=3) = 277
+  dim(V_7 cap B_<=4) = 9070
+  dim(V_7 cap B_<=5) = 51574
+  dim(V_7 cap B_<=6) = 186170
+  dim(V_7 cap B_<=7) = 532274
+  non-pivot monomials: total 3881  by degree: 0:1 1:23 2:253 3:1771 4:1833 5:0 6:0 7:0

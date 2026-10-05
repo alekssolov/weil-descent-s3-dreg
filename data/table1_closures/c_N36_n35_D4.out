@@ -1,0 +1,7 @@
+N=36 D=4 dim(V_D)=61425  products=139860  time=73s  rows_mem=0.04GB peak=0.17GB  (rref)
+  dim(V_4 cap B_<=0) = 0
+  dim(V_4 cap B_<=1) = 1
+  dim(V_4 cap B_<=2) = 105
+  dim(V_4 cap B_<=3) = 3885
+  dim(V_4 cap B_<=4) = 61425
+  non-pivot monomials: total 5287  by degree: 0:1 1:35 2:526 3:3360 4:1365

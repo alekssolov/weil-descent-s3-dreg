@@ -1,7 +1,9 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+% \usepackage[T1]{fontenc}  % disabled: no scalable T1 fonts on the build machine (would embed bitmap Type 3 fonts)
 \usepackage{amsmath,amssymb,amsthm}
+\DeclareTextSymbolDefault{\textbullet}{OMS}            % take the two symbols that would otherwise come from the
+\DeclareTextSymbolDefault{\textasteriskcentered}{OMS}  % bitmap-only TS1 fonts from the Type 1 cmsy font instead
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage[margin=2.6cm]{geometry}
@@ -22,7 +24,7 @@
 \newcommand{\Tr}{\mathrm{Tr}}
 \newcommand{\SR}{\mathrm{SR}}
 
-\title{The degree of regularity of Weil-descent systems for the third summation polynomial over $\F_{2^n}$:\\
+\title{The first fall degree assumption and the degree of regularity of Weil-descent systems for summation polynomials over $\F_{2^n}$:\\
 exact closure dimensions, thresholds and a growth law}
 \author{Alexander Solovyev\thanks{Independent researcher, Omsk, Russia. E-mail: \texttt{alekssolo118@gmail.com}. ORCID: 0009-0003-3657-863X.}}
 \date{September 2026}
@@ -31,16 +33,16 @@ exact closure dimensions, thresholds and a growth law}
 \maketitle
 
 \begin{abstract}
-Huang, Kosters and Yeo (CRYPTO 2015) asked how the degree of regularity of the Weil descent of the third summation polynomial $S_3(X_0,X_1,x(Q))$ over $\F_{2^n}$, with $X_0,X_1$ restricted to a random $\F_2$-subspace of dimension $\lceil n/2\rceil$, grows with $n$; their Magma experiments reached $n=30$ (degree~4) and $n=40$ (degree~$\ge 5$). We revisit the question with three independent tools: an exact computation of the degree-capped closures $V_D$ of their Definition~1 (a C implementation reaching 32 variables at degree~5), a corrected build of the M4GB Gröbner-basis solver, and a Buchberger reference implementation. We find that (i)~the degree of regularity is a deterministic function of the pair $(N,n)$ of variables and equations, independent of the curve, the subspace, the point and the number of solutions, and that the $\lceil n/2\rceil$ convention shifts the thresholds down for odd $n$; (ii)~the dimensions of the generic closures are exact polynomials, $\dim V_3=(3N-2)n-\binom N2$, $\dim V_4=\tfrac12[3N(N+1)n-171n-9n^2]$, and the degree-5 part $Q_5=3n\binom N3-\binom{3n+1}{2}N-n(79N-660)$, verified to the unit on 9 generic and 6 collapsed systems with $N\le 32$; (iii)~degree $D$ suffices exactly when the generic degree-$D$ part exceeds $\binom ND$, a criterion validated on 59 boundary cases and 110 grid outcomes without exception, including margins of $0.09\%$ and $0.15\%$; (iv)~the ideal contains exactly $3n$ quadrics --- the $n$ equations, $N-1$ multiples of the trace-linear form and $2n-N+1$ ``mutants'' --- and the closures behave like a semi-regular system of $3n$ Boolean quadrics minus a small lag. Consequently the degree of regularity is 3 for $n\le16$, 4 for $17\le n\le36$, 5 for $37\le n\le52$ (the last value predicted, the value~5 at $n=40$ confirmed) and grows linearly with slope $\approx 1/20$ in this range and $0.036$ asymptotically, refuting the constant-degree first-fall-degree assumption for this family while confirming that the two-point decomposition offers no subexponential attack. We also report and fix a deviation from the Gebauer--Möller criteria in M4GB that inflates the reported step degree.
+The only known route to a subexponential-time solution of the discrete logarithm problem on elliptic curves over binary fields $E(\F_{2^n})$ is the index calculus of Gaudry and Diem, with relations found by Weil descent of Semaev's summation polynomials. Its heuristic running time rests on the \emph{first fall degree assumption} of Petit and Quisquater: that the degree of regularity of the descended systems stays close to their first fall degree as $n$ grows. Huang, Kosters and Yeo (CRYPTO 2015) tested this for the third summation polynomial $S_3$ up to $n=40$ in Magma, saw the degree rise from 3 to at least 5, and left its growth open. We settle the question for $S_3$ as far as computation allows and take the first measurements for $S_4$. Three independent tools are used: an exact computation of the degree-capped closures $V_D$ of their Definition~1 (32 variables at degree 5; 24 variables at degree 7), a corrected build of the M4GB Gröbner-basis solver, and a Buchberger reference implementation. For $S_3$ (two-point decompositions): (i)~the degree of regularity is a deterministic function of the pair $(N,n)$ of variables and equations; (ii)~the generic closures have exact polynomial dimensions, $\dim V_3=(3N-2)n-\binom N2$, $\dim V_4=\tfrac12[3N(N+1)n-171n-9n^2]$ and a degree-5 part $Q_5=3n\binom N3-\binom{3n+1}2N-n(79N-660)$, verified to the unit on 15 further systems; (iii)~degree $D$ suffices exactly when the generic degree-$D$ part exceeds $\binom ND$, a criterion validated on 59 boundary cases and 110 grid outcomes without exception; (iv)~the ideal contains exactly $3n$ quadrics and the closures behave like a semi-regular system of $3n$ Boolean quadrics up to a small lag. Consequently the degree of regularity of $S_3$ is 3 for $n\le16$, 4 for $17\le n\le36$, 5 for $37\le n\le52$, and grows linearly (slope $\approx1/20$ here, $0.036$ asymptotically): the first fall degree assumption fails for two-point decompositions, quantitatively. For $S_4$ (three-point decompositions, degree-6 equations) the computed range shows the opposite: in all twenty systems computed, from square systems with 12 to 24 variables down to systems with three times as many variables as equations, the degree-7 closure contains the whole truncated ideal, so the solving degree equals the first fall degree 7 and no generic regime appears at all. We also report and fix a deviation from the Gebauer--Möller criteria in M4GB (merged upstream), and find that M4GB is unsuited to the dense degree-6 systems of $S_4$, for which the closure computation is the practical tool.
 \end{abstract}
 
 \paragraph{Notation.} $N$ is the number of Boolean variables and $n$ the number of quadratic equations (the extension degree); $\B=\F_2[x_1,\dots,x_N]/(x_i^2+x_i)$ is the Boolean polynomial ring, $\B_{\le k}$ its subspace of polynomials of degree $\le k$, $|\B_{\le k}|=\sum_{j\le k}\binom Nj$; $\binom{N}{\le k}$ abbreviates the same sum.
 
 \section{Introduction}
 
-Index calculus on elliptic curves over binary fields $E(\F_{2^n})$ rests on the \emph{point decomposition problem}: given $Q\in E(\F_{2^n})$, find $P_0,P_1$ in a factor base $\mathcal F_V=\{P: x(P)\in V\}$, $V$ an $\F_2$-subspace of $\F_{2^n}$, with $P_0+P_1=Q$. Semaev's third summation polynomial $S_3(X_0,X_1,x(Q))$ turns this into a bivariate equation over $\F_{2^n}$; writing $X_0,X_1$ in a basis of $V$ and taking coordinates over $\F_2$ (Weil descent) turns it into a system of $n$ quadratic equations in $N=2\dim V$ Boolean variables \cite{Semaev04,Gaudry09,Diem11,PQ12}. The cost of the whole attack is governed by the \emph{degree of regularity} $\Dreg$ of these systems --- the maximal degree that a Gröbner-basis algorithm must reach --- and the central open question, posed explicitly by Huang, Kosters and Yeo \cite[Sec.~5.2]{HKY15}, is how $\Dreg$ grows with $n$. The \emph{first fall degree assumption} of Petit and Quisquater, under which $\Dreg$ stays close to the first fall degree (here 2 or 3) for all $n$, would make the attack subexponential; HKY's experiments in Magma ($n\le 40$) showed $\Dreg$ increasing from 3 to at least 5 without settling the rate, and Kosters and Yeo \cite{KY15} added $n=17$ and $n=30$ and reported that $n=40$ exhausted 38\,GB of memory before finishing.
+For an elliptic curve over a prime field no algorithm for the discrete logarithm problem is known that beats the generic $\sqrt{\#E}$ bound. Over extension fields the situation is different: the index calculus of Gaudry \cite{Gaudry09} and Diem \cite{Diem11,Diem13} finds relations by \emph{point decomposition} --- given $Q$, find $P_1,\dots,P_m$ in a factor base $\mathcal F_V=\{P: x(P)\in V\}$, $V$ an $\F_q$-subspace of $\F_{q^n}$, with $P_1+\dots+P_m=Q$ --- and turns each decomposition into a polynomial system by Weil descent of Semaev's summation polynomial $S_{m+1}$ \cite{Semaev04}. For binary fields Petit and Quisquater \cite{PQ12} observed that the descended systems have a very low \emph{first fall degree} and argued that, if the degree at which a Gröbner-basis computation terminates stays close to it as $n$ grows --- the \emph{first fall degree assumption} --- the whole attack runs in time $2^{O(n^{2/3}\log n)}$, subexponential in the field size. Whether the assumption holds is therefore the question on which the asymptotic security of elliptic curves over $\F_{2^n}$ against this attack turns. Huang, Kosters and Yeo \cite{HKY15} gave a rigorous treatment of the related \emph{last fall degree} and tested the assumption experimentally in the two-point case ($S_3$, with $x(P_0),x(P_1)$ in a random subspace of dimension $\lceil n/2\rceil$): in Magma, for $n\le40$, the degree of regularity rose from 3 to at least 5 without a discernible law, and they posed its growth as an open problem \cite[Sec.~5.2]{HKY15}; Kosters and Yeo \cite{KY15} added $n=17$ and $30$ and reported that $n=40$ exhausted 38\,GB of memory before finishing.
 
-This note takes the question as far as computation allows, and then one step further by a structural model. Our contributions are the following.
+This note takes that question as far as computation allows, for $S_3$ and, for the first time, for $S_4$, and then one step further by a structural model. Our contributions are the following.
 
 \begin{enumerate}
 \item \textbf{Deterministic dependence on $(N,n)$.} For random subspaces the degree of regularity depends only on the number of variables $N$ and equations $n$: it is independent of the curve, the subspace, the point $Q$, the number of solutions (including inconsistent systems), and of the choice of instance. Under the convention $\dim V=\lceil n/2\rceil$ of HKY, odd $n$ has one variable more than equations ($N=n+1$) and reaches the next degree earlier than even $n$ --- the source of the apparently irregular entries $15\to4$, $35\to5$ in our tables.
@@ -53,12 +55,14 @@ and the degree-5 part of $V_5$ is $Q_5=3n\binom N3-\binom{3n+1}2N-n(79N-660)$. T
 
 \item \textbf{A threshold criterion.} Degree $D$ suffices --- the reduced Gröbner basis lies in $V_D$, so no F4-type algorithm needs a higher step degree --- exactly when the generic degree-$D$ part exceeds the number of degree-$D$ monomials: $Q_D(N,n)>\binom ND$. The criterion was tested on 59 boundary cases and 110 further grid outcomes (square, odd and unbalanced systems; closure computations and two Gröbner-basis solvers) without exception. It gives $\Dreg=3$ for $n\le16$, 4 for $17\le n\le36$ and 5 for $37\le n\le52$, the last value being a prediction; direct computations reach $n=40$ (M4GB, 6\,h) and confirm the value 5 that Magma could not reach \cite{KY15}.
 
-\item \textbf{Structure and a growth law.} The ideal contains exactly $3n$ quadratic polynomials: the $n$ equations, $N-1$ multiples of the trace-linear form of HKY's Proposition~5, and $2n-N+1$ further quadrics arising as degree falls. The closures behave, up to an explicit lag, like the Macaulay matrices of a \emph{semi-regular} system of $3n$ Boolean quadrics in $N$ variables \cite{BFS03,BFSY05}: the semi-regular thresholds are $20,37,56,76,97,119,\dots$ for $D=3,4,5,\dots$, ours are $16,36,52$. Consequently $\Dreg$ grows linearly in $n$, with about one degree per 20 variables in the computed range and slope $0.036$ asymptotically --- neither constant, as the first fall degree assumption would have it, nor logarithmic. The multiplier 3 explains why these systems are much easier than generic systems of $n$ quadrics (slope $0.09$) while still exponentially hard.
+\item \textbf{Structure and a growth law.} The ideal contains exactly $3n$ quadratic polynomials: the $n$ equations, $N-1$ multiples of the trace-linear form of HKY's Proposition~5, and $2n-N+1$ further quadrics arising as degree falls. The closures behave, up to an explicit lag, like the Macaulay matrices of a \emph{semi-regular} system of $3n$ Boolean quadrics in $N$ variables \cite{BFS03,BFSY05}: the semi-regular thresholds are $20,37,56,76,97,119,\dots$ for $D=3,4,5,\dots$, ours are $16,36,52$. Consequently $\Dreg$ grows linearly in $n$, with about one degree per 20 variables in the computed range and slope $0.036$ asymptotically. \emph{The first fall degree assumption fails for two-point decompositions}, and it fails in a quantified way: the systems are exactly as easy as generic systems with three times as many equations, and no easier --- a constant factor in the exponent relative to generic systems of $n$ quadrics (slope $0.09$), not a change of complexity class.
 
-\item \textbf{A solver defect.} The reported step degree of the Gröbner-basis solver M4GB \cite{MS17} is inflated by one on part of this family because its pair-update discards both members of every pair of critical pairs with equal lcm, whereas the Gebauer--Möller criteria keep one. We locate, reproduce and fix the defect (pull request \#14); the corrected solver agrees with the closure computations everywhere.
+\item \textbf{Three-point decompositions.} The Weil descent of $S_4$ yields $n$ equations of degree 6 in $N=3\lceil n/3\rceil$ variables. With a memory-light closure implementation reaching 24 variables at degree 7 we find the opposite behaviour in the computed range: in all twenty systems computed --- square systems with $N=12,\dots,24$ and systems with as few as $N/3$ equations --- the degree-7 closure contains the whole truncated ideal, so the solving degree equals the first fall degree 7 and no generic regime appears, whereas for $S_3$ the generic regime sets in at $N=17$ and its boundary then moves by about $0.025N$ per variable. The assumption of Petit and Quisquater is thus consistent with all data for $m=3$ while refuted for $m=2$.
+
+\item \textbf{Solvers.} The reported step degree of the Gröbner-basis solver M4GB \cite{MS17} was inflated by one on part of the $S_3$ family because its pair update discarded both members of every pair of critical pairs with equal lcm, whereas the Gebauer--Möller criteria keep one. We located, reproduced and fixed the defect; the fix was merged upstream (pull request \#14, September 2026), and the corrected solver agrees with the closure computations everywhere. On the dense degree-6 systems of $S_4$, M4GB exhausts memory already at 21 variables (matrices of $2\cdot10^6$ rows), so that there the closure computation, not the Gröbner-basis solver, is the practical instrument.
 \end{enumerate}
 
-We stress what is \emph{not} claimed. The formulas are empirical: exact on every point we could compute, with the structural explanation of Section~\ref{sec:structure} reaching the first of the two stages of the closure. Beyond $D=5$ the thresholds are predictions of the semi-regular model with a lag that we can bound but not derive. No cryptographic consequence follows for the decomposition with two points: even a bounded $\Dreg$ would leave the index calculus at $2^{n/2}$ relations for a factor base of this size.
+We stress what is \emph{not} claimed. The formulas are empirical: exact on every point we could compute, with the structural explanation of Section~\ref{sec:structure} reaching the first of the two stages of the closure. Beyond $D=5$ the $S_3$ thresholds are predictions of the semi-regular model with a lag that we can bound but not derive. For $S_4$ the computed range is $N\le24$, and twenty collapses are evidence, not proof, that the assumption holds; the question is settled only for $m=2$. No practical consequence follows for curves in use: two-point decompositions are exponential regardless, and for $m\ge3$ the cost of a single decomposition at cryptographic sizes remains far beyond anything reached here.
 
 \section{Preliminaries}
 
@@ -110,9 +114,9 @@ The number of solutions is obtained exactly by exploiting the bilinear structure
 
 Field arithmetic over $\F_{2^n}$ (irreducible polynomials found by the Ben-Or test), curve arithmetic and the derivation of $S_3$ were implemented from scratch and checked against the group law on random points; the Weil descent was checked by evaluating every generated system on its known solution. Subspaces are random (a uniformly chosen independent set); coordinates of points in $V$ are computed by Gaussian elimination. All instances are reproducible from a seed; the seeds of every instance in this note are listed in the supplementary archive.
 
-\subsection{Closure computations}
+\subsection{Closure computations}\label{sec:tools}
 
-Closures were computed by two independent programs. The first, in Python, represents Boolean polynomials as bit vectors over the monomials of degree $\le D$ in grevlex order and computes $V_D$ by iterated multiplication with echelon reduction; it handles $N\le26$ at $D=4$ and was used for all $D=3,4$ data and for the verification of Lemma~\ref{lem:std} by comparison with the Buchberger--Möller basis of the vanishing ideal of the solution set. The second, in C (about 400 lines), stores rows as packed 64-bit words up to their pivot, keeps the echelon block-triangular (every pivot row has zeros at the pivot columns of earlier blocks; the rows of one block are in reduced echelon form among themselves), and reduces batches of new rows by Gray-code tables of $k=10$ pivot rows (the Method of Four Russians), so that no reduced-row-echelon maintenance is needed when pivots are appended. Rows are expanded once, in insertion order, and only if their degree is $\le D-1$; with OpenMP the reduction of a batch is parallel over rows. It reproduces every Python result to the unit and reaches $N=32$ at $D=5$ (243\,000 columns, 3.7\,GB, 5--13 hours on eight threads). A second mode computes the rank of the plain product set $\{t\,q: q\in W_2,\ \deg t\le D-2\}$ of Section~\ref{sec:structure}, without the iterated expansion of degree falls.
+Closures were computed by two independent programs. The first, in Python, represents Boolean polynomials as bit vectors over the monomials of degree $\le D$ in grevlex order and computes $V_D$ by iterated multiplication with echelon reduction; it handles $N\le26$ at $D=4$ and was used for all $D=3,4$ data and for the verification of Lemma~\ref{lem:std} by comparison with the Buchberger--Möller basis of the vanishing ideal of the solution set. The second, in C (about 400 lines), stores rows as packed 64-bit words up to their pivot, keeps the echelon block-triangular (every pivot row has zeros at the pivot columns of earlier blocks; the rows of one block are in reduced echelon form among themselves), and reduces batches of new rows by Gray-code tables of $k=10$ pivot rows (the Method of Four Russians), so that no reduced-row-echelon maintenance is needed when pivots are appended. Rows are expanded once, in insertion order, and only if their degree is $\le D-1$; with OpenMP the reduction of a batch is parallel over rows. It reproduces every Python result to the unit and reaches $N=32$ at $D=5$ (243\,000 columns, 3.7\,GB, 5--13 hours on eight threads). A second mode computes the rank of the plain product set $\{t\,q: q\in W_2,\ \deg t\le D-2\}$ of Section~\ref{sec:structure}, without the iterated expansion of degree falls. A third implementation, written for the $S_4$ systems of Section~\ref{sec:s4}, keeps the echelon in \emph{fully} reduced row echelon form and stores each row only over the columns that are not yet pivots, compacting lazily; since the rows shrink as pivots accumulate, both memory and work decrease as the closure fills the truncated ideal, and 24 variables at degree 7 ($536\,000$ columns) fit in 10\,GB where the block-triangular echelon would need 18\,GB. All three implementations agree to the unit on every system computed with more than one of them.
 
 \subsection{Gröbner-basis solvers}\label{sec:m4gb}
 
@@ -121,14 +125,14 @@ We used M4GB \cite{MS17} (GF(2), field equations included as input polynomials; 
 if (it != it2 && it2->first.intlcm | it->first.intlcm)
     { it->second = false; break; }
 \end{verbatim}
-so that two admissible new pairs with equal lcm discard each other, whereas the F-criterion keeps exactly one (none if a coprime pair shares the lcm) \cite{GM88}. The final basis was correct in every run we made --- the lost S-polynomials reappear through pairs of higher lcm degree --- but the maximal step degree is inflated by one where those S-polynomials carry the degree falls. On the $n=16$ systems of HKY the solver reports 4 (13 new polynomials at degree 4: exactly the 13 linear polynomials that complete the basis) against HKY's 3; with the criterion corrected (a 20-line change; the fix is available as pull request \#14 to the M4GB repository, \url{https://github.com/cr-marcstevens/m4gb/pull/14}, and as a standalone patch in the supplementary archive) it reports 3 on all 41 instances we tested, with the same basis, and agrees with $\Dsolve$ on every instance of this note. We reproduced the mechanism independently with a Buchberger implementation whose pair criteria can be switched between the two versions.
+so that two admissible new pairs with equal lcm discard each other, whereas the F-criterion keeps exactly one (none if a coprime pair shares the lcm) \cite{GM88}. The final basis was correct in every run we made --- the lost S-polynomials reappear through pairs of higher lcm degree --- but the maximal step degree is inflated by one where those S-polynomials carry the degree falls. On the $n=16$ systems of HKY the solver reports 4 (13 new polynomials at degree 4: exactly the 13 linear polynomials that complete the basis) against HKY's 3; with the criterion corrected (a 20-line change, submitted as pull request \#14 and merged into the main M4GB repository on 25 September 2026, \url{https://github.com/cr-marcstevens/m4gb/pull/14}; also provided as a standalone patch in the supplementary archive) it reports 3 on all 41 instances we tested, with the same basis, and agrees with $\Dsolve$ on every instance of this note. We reproduced the mechanism independently with a Buchberger implementation whose pair criteria can be switched between the two versions.
 
 \subsection{Verification chain}
 
 Each number in Sections~\ref{sec:results}--\ref{sec:criterion} rests on at least two of: the closure computation ($\Dsolve$ by Lemma~\ref{lem:std}), the corrected M4GB ($\Dreg$ by HKY's definition), the Buchberger reference implementation, and, for HKY's own sizes, their published Magma values. Where a polynomial formula is stated, the points used to fit it are separated from the points used to verify it, and the latter --- 21 in total --- were computed after the prediction was recorded. The threshold predictions of Section~\ref{sec:criterion} were likewise written down, with their margins, before the corresponding systems were run.
 \section{Results for the systems of HKY}\label{sec:results}
 
-Table~\ref{tab:square} collects the degree of regularity for the systems of \cite[Sec.~5.2]{HKY15} --- random curve, random subspace of dimension $\lceil n/2\rceil$ --- from $n=12$ to $n=40$. ``Closure'' is $\Dsolve$ computed by Lemma~\ref{lem:std}; ``M4GB'' is the corrected solver's largest productive step degree; the last two columns are the published values of HKY (Magma F4) and KY. For $n\le24$ the closure column summarises 378 instances (random and consistent $Q$, fixed and varying curves and subspaces, several instances per $n$) with no variation whatsoever; for $n\ge26$ two instances were run at $26$--$32$, $35$ and $36$ and one otherwise. Entries in parentheses are the values given by the criterion of Section~\ref{sec:criterion}; the closures at these sizes were not computed directly (the degree-4 closure was computed up to $N=30$ for unbalanced systems, Table~\ref{tab:boundary}).
+Table~\ref{tab:square} collects the degree of regularity for the systems of \cite[Sec.~5.2]{HKY15} --- random curve, random subspace of dimension $\lceil n/2\rceil$ --- from $n=12$ to $n=40$. ``Closure'' is $\Dsolve$ computed by Lemma~\ref{lem:std}; ``M4GB'' is the corrected solver's largest productive step degree; the last two columns are the published values of HKY (Magma F4) and KY. For $n\le24$ the closure column summarises 378 instances (random and consistent $Q$, fixed and varying curves and subspaces, several instances per $n$) with no variation whatsoever; for $n\ge26$ two instances were run at $26$--$32$, $35$ and $36$ and one otherwise. For $n\ge26$ the closure column was computed with the memory-light implementation of Section~\ref{sec:tools}: the degree-4 closures collapse for $n=26$--$34$ and $36$ and do not collapse for $n=35$ and $37$--$40$ (so that $\Dsolve\ge5$ there), and the degree-5 closures collapse for $n=35$ and $37$--$40$: $\dim V_5=|\B_{\le5}|-\#\text{sol}$ with standard monomials of degree $\le1$ only. The $n=40$ system, which Magma could not finish in 38\,GB \cite{KY15}, took 32 hours and a peak of 20\,GB (partly in swap) on a desktop.
 
 \begin{table}[ht]\centering\small
 \caption{Degree of regularity of the Weil-descent system of $S_3$, $\dim V=\lceil n/2\rceil$. Bold: odd $n$ at which the degree increases one step earlier than for the neighbouring even $n$.}\label{tab:square}
@@ -148,17 +152,17 @@ $n$ & $N$ & closure & M4GB (fixed) & HKY & KY & \multicolumn{2}{l}{time / memory
 22 & 22 & 4 & --- & & & \\
 24 & 24 & 4 & --- & 4 & & \\
 26 & 26 & 4 & 4 & & & 26\,s / 7\,MiB\\
-28 & 28 & (4) & 4 & & & 71\,s / 7\,MiB\\
-30 & 30 & (4) & 4 & & 4 & 214\,s / 7\,MiB\\
-32 & 32 & (4) & 4 & & & 8\,min / 9\,MiB\\
-33 & 34 & (4) & 4 & & & 18\,min / 0.6\,GiB\\
-34 & 34 & (4) & 4 & & & 17\,min / 0.6\,GiB\\
-35 & 36 & (5) & \textbf{5} & & & 36--44\,min / 0.6--1.0\,GiB\\
-36 & 36 & (4) & 4 & & & 38--39\,min / 0.5--0.8\,GiB\\
-37 & 38 & (5) & 5 & & & 82\,min / 1.0\,GiB\\
-38 & 38 & (5) & 5 & & & 78\,min / 0.8\,GiB\\
-39 & 40 & (5) & 5 & & & 5.1\,h / 2.2\,GiB\\
-40 & 40 & (5) & 5 & & $\ge5$ & 6.0\,h / 1.5\,GiB\\
+28 & 28 & 4 & 4 & & & 71\,s / 7\,MiB\\
+30 & 30 & 4 & 4 & & 4 & 214\,s / 7\,MiB\\
+32 & 32 & 4 & 4 & & & 8\,min / 9\,MiB\\
+33 & 34 & 4 & 4 & & & 18\,min / 0.6\,GiB\\
+34 & 34 & 4 & 4 & & & 17\,min / 0.6\,GiB\\
+35 & 36 & \textbf{5} & \textbf{5} & & & 36--44\,min / 0.6--1.0\,GiB\\
+36 & 36 & 4 & 4 & & & 38--39\,min / 0.5--0.8\,GiB\\
+37 & 38 & 5 & 5 & & & 82\,min / 1.0\,GiB\\
+38 & 38 & 5 & 5 & & & 78\,min / 0.8\,GiB\\
+39 & 40 & 5 & 5 & & & 5.1\,h / 2.2\,GiB\\
+40 & 40 & 5 & 5 & & $\ge5$ & 6.0\,h / 1.5\,GiB\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -189,13 +193,13 @@ The lowest levels are uniform across the family:
 level & formula & fitted on & verified on\\
 \midrule
 $P_3$ & $(3N-2)n-\binom N2$ & $N=16,18$ (slope and intercept in $n$) & 40 further $(N,n)$, $N=14$--$26$, exact\\
-$P_4$ & $\frac12[3N(N+1)n-171n-9n^2]$ & $N=18,22,24$ & $N=20,26,28,30,32$ (13 points), exact\\
+$P_4$ & $\frac12[3N(N+1)n-171n-9n^2]$ & $N=18,22,24$ & $N=20,26,28,30,32$ (13 points) and the square and odd systems at $N=36,38,40$ (5 points), exact\\
 $Q_5$ & $3n\binom N3-\binom{3n+1}2N-n(79N-660)$ & $(24,12)$, $(26,13)$ & 7 points, $N=28$--$32$, $n-N/2\le3$, exact\\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The data behind Table~\ref{tab:formulas}: for $D\le4$ a grid of 55 systems with $N=16,18,\dots,24$ and $n$ running from $N/2$ to $N$ ($\dim V=N/2$ for both points, $n$ equations from the field $\F_{2^n}$); a second family with $\dim V_0=(n+1)/2$, $\dim V_1=(n-1)/2$ ($N=n$ for odd $n$); and the square and odd systems of Table~\ref{tab:square} up to $N=26$. For $D=5$, the 15 systems of Table~\ref{tab:level5}.
+The data behind Table~\ref{tab:formulas}: for $D\le4$ a grid of 55 systems with $N=16,18,\dots,24$ and $n$ running from $N/2$ to $N$ ($\dim V=N/2$ for both points, $n$ equations from the field $\F_{2^n}$); a second family with $\dim V_0=(n+1)/2$, $\dim V_1=(n-1)/2$ ($N=n$ for odd $n$); and the square and odd systems of Table~\ref{tab:square} up to $N=26$; for $P_4$ also the five generic systems $(36,35)$, $(38,37)$, $(38,38)$, $(40,39)$, $(40,40)$, whose degree-4 closures ($61\,425$, $72\,927$, $74\,727$, $85\,761$, $87\,780$) agree with the formula to the unit. For $D=5$, the 15 systems of Table~\ref{tab:level5}.
 
 \begin{table}[ht]\centering\small
 \caption{Level 5 (C program; dimensions to the unit). ``Full'' means $\dim V_5=|\B_{\le5}|-\#\text{solutions}$. The first two rows fixed the two free parameters of $Q_5$ (the coefficients 79 and 660); every other entry was predicted before it was computed.}\label{tab:level5}
@@ -263,8 +267,8 @@ $D$ & $(N,n)$ & $Q_D-\binom ND$ & predicted & observed & method\\
 4 & (28,21), (28,22) & $-504$, $+348$ & g, c & g, c & M4GB\\
 4 & (32,28), (32,29) & $-302$, $+841$ & g, c & g, c & M4GB\\
 4 & (34,31), (34,32) & $-1271$, $\mathbf{+40}$ & g, c & g, c & M4GB\\
-4 & (34,33), (34,34), (36,36) & $+1342$, $+2635$, $+117$ & c & c & M4GB\\
-4 & (36,35), (38,37), (38,38), (40,39), (40,40) & $-1365$, $-5217$, $-3534$, $-10426$, $-8530$ & g & g & M4GB\\
+4 & (34,33), (34,34), (36,36) & $+1342$, $+2635$, $+117$ & c & c & M4GB and closure\\
+4 & (36,35), (38,37), (38,38), (40,39), (40,40) & $-1365$, $-5217$, $-3534$, $-10426$, $-8530$ & g & g & M4GB and closure\\
 5 & 15 cases of Table~\ref{tab:level5} & from $-30\,816$ to $+3\,400$ & & all as predicted & closure\\
 5 & (34,22), (34,23) & $-3058$, $+5932$ & g, c & g, c & M4GB\\
 5 & (36,24), (36,25) & $-9936$, $\mathbf{+1308}$ & g, c & g, c & M4GB\\
@@ -339,6 +343,48 @@ i.e.\ one degree per 28 variables asymptotically, one per 20 in the computed ran
 
 For the index calculus this changes nothing qualitatively: the decomposition with two points is exponential in $n$ with a smaller constant than the generic estimate, and the relation collection needs $2^{n/2}$ decompositions regardless.
 
+\section{Three-point decompositions: the Weil descent of $S_4$}\label{sec:s4}
+
+\subsection{The systems}
+
+The subexponential estimate of \cite{PQ12} uses decompositions into $m\ge3$ points, so the assumption that matters most is the one for $S_4$ and beyond. With $S_3(X_1,X_2,X)=AX^2+BX+C$, $A=(X_1+X_2)^2$, $B=X_1X_2$, $C=B^2+a_6$, the fourth summation polynomial is the resultant of two copies of $S_3$ in the common variable, which in characteristic 2 reads
+\[
+S_4(X_1,X_2,X_3,X_4)=(AC'+A'C)^2+(AB'+A'B)(BC'+B'C),
+\]
+primes denoting the same expressions in $(X_3,X_4)$. We checked on random points that it vanishes on $x$-coordinates of $P_1+P_2+P_3=Q$ and not on random quadruples. Substituting $x(P_i)=\sum_j u_{ij}v_j$ with $u_{ij}\in\F_2$ and $x(P_4)=x(Q)$, and using that squaring is $\F_2$-linear, the descended system consists of $n$ equations in $N=3d$ variables whose degree over $\F_2$ is exactly 6 (a monomial $X_i^3$ contributes degree 2, $X_i,X_i^2,X_i^4$ degree 1); every equation has about $d^6/2$ monomials. We take $d=\lceil n/3\rceil$ for square systems and smaller $n$ for the same $d$ to move along the $(N,n)$ family, as for $S_3$. Solutions of the descended system are counted exhaustively over $V_1\times V_2\times V_3$ (see the remark in Section~8.2), and every descended system was verified to vanish on all of them.
+
+Two consequences of degree 6 shape the computation. At $D=6$ nothing happens: there are no products to form. At $D=7$ the products $x_af$ of the equations already fall in degree, so the first fall degree is $7=\deg+1$, and the question is whether $V_7$ contains the Gröbner basis. The monomial counts are far larger than for $S_3$ ($|\B_{\le7}|=536\,155$ at $N=24$), and M4GB, whose strength lies in keeping tails fully reduced, builds matrices of over $2\cdot10^6$ rows already at $N=21$ and stops with \texttt{std::bad\_alloc}; the third closure implementation of Section~\ref{sec:tools}, with the echelon in fully reduced form, is what made $N=24$ possible.
+
+\subsection{Results}
+
+\begin{table}[ht]\centering\small
+\caption{$S_4$ at $D=7$: in every case $\dim V_7=|\B_{\le7}|-\#\text{sol}$ and all standard monomials have degree $\le6$, so the reduced Gröbner basis lies in $V_7$ and $\Dsolve=7$. \#sol is the number of $\F_2$-solutions of the descended system (see the remark below). For the four systems marked $\dagger$ the closure at $D=8$ was computed as well and has the same standard monomials.}\label{tab:s4}
+\begin{tabular}{rrrrl}
+\toprule
+$N$ & $n$ & $n/N$ & \#sol & $\dim V_7$\\
+\midrule
+12 & 12 & 1 & 2 & 3\,300\\
+15 & 15 & 1 & 3 & 16\,381\\
+18 & 18 & 1 & 1 & 63\,003\\
+18 & 16, 14, 12, 10, 9 & 0.89--0.50 & 2, 18, 71, 363, 809 & $|\B_{\le7}|-\#\text{sol}$\\
+18 & 8 & 0.44 & 842 & 62\,162$^\dagger$\\
+18 & 7 & 0.39 & 1\,791 & 61\,213$^\dagger$\\
+18 & 6 & 0.33 & 4\,933 & 58\,071$^\dagger$\\
+21 & 21 & 1 & 2 & 198\,438\\
+21 & 18, 15, 12 & 0.86--0.57 & 5, 62, 499 & $|\B_{\le7}|-\#\text{sol}$\\
+21 & 9 & 0.43 & 4\,538 & 193\,902$^\dagger$\\
+24 & 24 & 1 & 1 & 536\,154\\
+24 & 12 & 0.50 & 3\,881 & 532\,274\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every one of the twenty systems collapsed at $D=7$: the closure contains the whole truncated ideal, $\Dsolve$ equals the first fall degree $7$, and this holds from square systems down to $n=N/3$, i.e.\ for systems with thousands of solutions. No generic regime was observed at all --- for $S_3$ it sets in at $N=17$ for $D=3$ and the collapse boundary $n_0(N)$ then moves by about $0.025N$ per variable at fixed $D$ (Section~\ref{sec:criterion}); for $S_4$ up to $N=24$ there is no boundary to move. The closures at $D=8$ for the four systems with the most solutions add no standard monomial and confirm the picture.
+
+\paragraph{Remark (counting solutions).} Lemma~\ref{lem:std} needs the number of $\F_2$-solutions of the \emph{descended} system, and for $S_4$ this is not the number of decompositions. The resultant $S_4$ vanishes whenever the two quadratics have a common root in the algebraic closure, so also when the common root lies in $\F_{2^{2n}}$ --- these solutions have no point of $E(\F_{2^n})$ behind them --- and when both leading coefficients vanish ($x_1=x_2$, $x_3=x(Q)$). A count through common roots in $\F_{2^n}$ misses them: at $(18,8)$ it gives 833 where the system has 842 solutions, and the nine ``missing'' elements of $V_7$ that we first took for a genuine deficit were exactly these. All counts in Table~\ref{tab:s4} are exhaustive over $V^3$; the descended systems were verified to vanish on every solution found.
+
+Within the computed range the first fall degree assumption therefore holds for $m=3$ while it fails for $m=2$. Whether degree 7 keeps sufficing for larger $N$ is open; the next value, $N=27$, needs about $37$\,GB for the closure and is the natural target for a larger machine.
+
 \section{Controls}
 
 \paragraph{Random quadrics.} As noted in Section~\ref{sec:structure}, $3n$ random dense Boolean quadrics reproduce the semi-regular series exactly (no lag). Random \emph{bilinear} quadrics in the same two blocks of variables collapse earlier (fewer monomials are available to bilinear products); the Weil-descent systems, although bilinear in their quadratic part, behave like dense ones because $W_2$ is not bilinear.
@@ -353,14 +399,14 @@ For the index calculus this changes nothing qualitatively: the decomposition wit
 \item \emph{Why $3n$ and $2n-N+1$.} The dimension of the quadratic part of the ideal and the number of mutants were measured, not derived. Both should follow from the $\F_{2^n}$-linear structure of $S_3$: the equations are the coordinates of a single polynomial over $\F_{2^n}$, and the mutants are combinations $\Tr(\gamma\Lambda S_3)$ with $\Lambda$ ranging over $\F_{2^n}$-linear forms in the coordinates, whose cubic part vanishes; the count $2n-N+1$ has the shape of a dimension count ($2n$ unknowns, $N$ constraints, one degree of freedom) that we could not complete.
 \item \emph{The second stage.} A closed form for the rank $S_D$ of the products of variables with the degree falls would give $\mathrm{lag}_D$ for every $D$ and turn the $D=6$ threshold, currently bracketed as $66\le N\le76$, into a prediction. The data for $S_4$ (exact) and $S_5$ (nine points) are in the archive.
 \item \emph{Semi-regularity of $W_2$.} Is the Macaulay span of $W_2$ semi-regular in the quotient by $\ell$, as the first-stage formula asserts, for all $D$? (For the complexity of Weil restriction systems in general see \cite{HKYY18,CCG23}.) A proof would settle the first stage; the deviation $\delta_5$ shows that the naive statement needs the corrections listed in Section~\ref{sec:structure}.
-\item \emph{Beyond two points.} The tools apply verbatim to the Weil descent of $S_4$ (three points, cubic equations). Whether the quadric --- here cubic --- part of the ideal again exceeds the number of equations by a fixed factor is the question that would decide the shape of $\Dreg$ for the decompositions that matter cryptographically.
+\item \emph{Beyond $N=24$ for three points.} Section~\ref{sec:s4} leaves the central question open: does degree 7 keep sufficing for the Weil descent of $S_4$ --- in which case the first fall degree assumption holds for $m=3$ and the estimate of \cite{PQ12} stands for that step --- or does a generic regime appear at some $N>24$, as it does at $N=17$ for $S_3$? One more value of $N$ ($27$, about $37$\,GB) is the next test; an argument for why the degree-7 closure of an $S_4$ system reaches the whole truncated ideal would be better still.
 \end{enumerate}
 
 \section{Reproducibility}
 
-All systems are generated from seeds recorded in the supplementary archive (\url{https://github.com/alekssolov/weil-descent-s3-dreg}); the generator (Python~3, standard library and numpy), the Python closure and its verification by Buchberger--Möller, the C closure program with its Macaulay mode, the Buchberger reference implementation with switchable pair criteria, the emulation of M4GB's criteria, the M4GB patch (as a script and as a unified diff), every input file run in M4GB and every solver log are provided. Timings: level-5 closures at $N=32$ take 5--13\,h and 3.4--3.7\,GB on eight threads; the largest solver runs are $(40,30)$ --- 63\,h and 8.5\,GB --- and the square system $n=40$ --- 6\,h and 1.5\,GB. Two practical remarks for anyone repeating the solver runs are in Section~\ref{sec:m4gb}: the libtool wrapper in \texttt{bin/} is not the executable, and the pair criteria of the 2018 release need the correction of pull request \#14 for step degrees to be meaningful.
+All systems are generated from seeds recorded in the supplementary archive (\url{https://github.com/alekssolov/weil-descent-s3-dreg}); the generator (Python~3, standard library and numpy), the Python closure and its verification by Buchberger--Möller, the C closure program with its Macaulay mode, the Buchberger reference implementation with switchable pair criteria, the emulation of M4GB's criteria, the M4GB patch (as a script and as a unified diff), the $S_4$ generator with its self-checks, the memory-light closure program, every input file run in M4GB and every solver log are provided. The $S_4$ closures at $N=24$ took about 72 hours each and 10\,GB on an 8-thread desktop (two of them run concurrently, hence partly in swap); the degree-5 closures of the $S_3$ systems with 40 variables took 32 hours each with a peak of 20\,GB. Timings: level-5 closures at $N=32$ take 5--13\,h and 3.4--3.7\,GB on eight threads; the largest solver runs are $(40,30)$ --- 63\,h and 8.5\,GB --- and the square system $n=40$ --- 6\,h and 1.5\,GB. Two practical remarks for anyone repeating the solver runs are in Section~\ref{sec:m4gb}: the libtool wrapper in \texttt{bin/} is not the executable, and the pair criteria of releases before 25 September 2026 need the correction of pull request \#14 for step degrees to be meaningful.
 
-\paragraph{Acknowledgements.} We are deeply grateful to Dr Marc Stevens and Dr Rusydi H. Makarim for making their Gröbner-basis solver M4GB publicly available; all Gröbner-basis computations in this note were carried out with it, and we thank Dr Stevens for his prompt response to our report on the pair criteria. The author used an AI assistant (Anthropic Claude) for programming, data analysis and drafting; all computations were run and all results verified by the author.
+\paragraph{Acknowledgements.} We are deeply grateful to Dr Marc Stevens and Dr Rusydi H. Makarim for making their Gröbner-basis solver M4GB publicly available; all Gröbner-basis computations in this note were carried out with it, and we thank Dr Stevens for his prompt response to our report on the pair criteria and for merging the correction. The author used an AI assistant (Anthropic Claude) for programming, data analysis and drafting; all computations were run and all results verified by the author.
 
 \begin{thebibliography}{99}\small
 \bibitem{ACFP12} M.~R. Albrecht, C.~Cid, J.-C. Faugère, L.~Perret, On the relation between the MXL family of algorithms and Gröbner basis algorithms, J.~Symbolic Comput.\ 47 (2012), 926--941.

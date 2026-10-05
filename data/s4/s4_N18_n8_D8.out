@@ -1,0 +1,11 @@
+N=18 D=8 dim(V_D)=105920  products=1118790  time=500s  rows_mem=0.01GB peak=0.41GB  (rref)
+  dim(V_8 cap B_<=0) = 0
+  dim(V_8 cap B_<=1) = 0
+  dim(V_8 cap B_<=2) = 9
+  dim(V_8 cap B_<=3) = 179
+  dim(V_8 cap B_<=4) = 3206
+  dim(V_8 cap B_<=5) = 11774
+  dim(V_8 cap B_<=6) = 30338
+  dim(V_8 cap B_<=7) = 62162
+  dim(V_8 cap B_<=8) = 105920
+  non-pivot monomials: total 842  by degree: 0:1 1:18 2:144 3:646 4:33 5:0 6:0 7:0 8:0

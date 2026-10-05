@@ -1,0 +1,12 @@
+c_N28_n28.txt nsol=3
+c_N30_n30.txt nsol=4
+c_N32_n32.txt nsol=1
+c_N34_n33.txt nsol=1
+c_N34_n34.txt nsol=1
+c_N36_n35.txt nsol=2
+c_N36_n36.txt nsol=2
+c_N38_n37.txt nsol=2
+c_N38_n38.txt nsol=1
+c_N40_n39.txt nsol=4
+c_N40_n40.txt nsol=3
+done

@@ -1,0 +1,8 @@
+N=36 D=5 dim(V_D)=443702  products=2393219  time=16295s  rows_mem=0.00GB peak=6.93GB  (rref)
+  dim(V_5 cap B_<=0) = 0
+  dim(V_5 cap B_<=1) = 35
+  dim(V_5 cap B_<=2) = 665
+  dim(V_5 cap B_<=3) = 7805
+  dim(V_5 cap B_<=4) = 66710
+  dim(V_5 cap B_<=5) = 443702
+  non-pivot monomials: total 2  by degree: 0:1 1:1 2:0 3:0 4:0 5:0

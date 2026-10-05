@@ -1,0 +1,2 @@
+s4_N21_n21: P lcmdegree=7 P #n:217 P lcmdegree=6 P #n:571 P lcmdegree=6 P #n:484 P lcmdegree=6 P #n:606 P lcmdegree=6 P #n:253 P lcmdegree=6 P #n:646 P lcmdegree=6 P #n:497 P lcmdegree=6 P #n:260 P lcmdegree=6 | 
+s4_N21_n9: P lcmdegree=7 P #n:81 P lcmdegree=6 P #n:264 P lcmdegree=6 P #n:288 P lcmdegree=6 P #n:373 P lcmdegree=6 P #n:257 P lcmdegree=7 | 

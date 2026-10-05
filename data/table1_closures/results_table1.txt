@@ -1,0 +1,14 @@
+c_N28_n28 D=4: N=28 D=4 dim(V_D)=24155  products=58016  time=1s  rows_mem=0.00GB peak=0.02GB  (rref) |   non-pivot monomials: total 3  by degree: 0:1 1:2 2:0 3:0 4:0
+c_N30_n30 D=4: N=30 D=4 dim(V_D)=31927  products=78420  time=4s  rows_mem=0.00GB peak=0.04GB  (rref) |   non-pivot monomials: total 4  by degree: 0:1 1:3 2:0 3:0 4:0
+c_N32_n32 D=4: N=32 D=4 dim(V_D)=41448  products=95232  time=12s  rows_mem=0.00GB peak=0.06GB  (rref) |   non-pivot monomials: total 1  by degree: 0:1 1:0 2:0 3:0 4:0
+c_N34_n33 D=4: N=34 D=4 dim(V_D)=52955  products=111282  time=31s  rows_mem=0.00GB peak=0.10GB  (rref) |   non-pivot monomials: total 1  by degree: 0:1 1:0 2:0 3:0 4:0
+c_N34_n34 D=4: N=34 D=4 dim(V_D)=52955  products=94996  time=29s  rows_mem=0.00GB peak=0.10GB  (rref) |   non-pivot monomials: total 1  by degree: 0:1 1:0 2:0 3:0 4:0
+c_N36_n35 D=4: N=36 D=4 dim(V_D)=61425  products=139860  time=73s  rows_mem=0.04GB peak=0.17GB  (rref) |   non-pivot monomials: total 5287  by degree: 0:1 1:35 2:526 3:3360 4:1365
+c_N36_n36 D=4: N=36 D=4 dim(V_D)=66710  products=135540  time=66s  rows_mem=0.00GB peak=0.17GB  (rref) |   non-pivot monomials: total 2  by degree: 0:1 1:1 2:0 3:0 4:0
+c_N38_n37 D=4: N=38 D=4 dim(V_D)=72927  products=164502  time=145s  rows_mem=0.10GB peak=0.26GB  (rref) |   non-pivot monomials: total 10066  by degree: 0:1 1:37 2:593 3:4218 4:5217
+c_N38_n38 D=4: N=38 D=4 dim(V_D)=74727  products=168948  time=155s  rows_mem=0.08GB peak=0.26GB  (rref) |   non-pivot monomials: total 8266  by degree: 0:1 1:37 2:590 3:4104 4:3534
+c_N40_n39 D=4: N=40 D=4 dim(V_D)=85761  products=191880  time=310s  rows_mem=0.18GB peak=0.38GB  (rref) |   non-pivot monomials: total 16330  by degree: 0:1 1:39 2:664 3:5200 4:10426
+c_N40_n40 D=4: N=40 D=4 dim(V_D)=87780  products=196800  time=285s  rows_mem=0.16GB peak=0.38GB  (rref) |   non-pivot monomials: total 14311  by degree: 0:1 1:39 2:661 3:5080 4:8530
+c_N36_n35 D=5: N=36 D=5 dim(V_D)=443702  products=2393219  time=16295s  rows_mem=0.00GB peak=6.93GB  (rref) |   non-pivot monomials: total 2  by degree: 0:1 1:1 2:0 3:0 4:0 5:0
+c_N38_n37 D=5: N=38 D=5 dim(V_D)=584933  products=3038708  time=61939s  rows_mem=0.00GB peak=11.97GB  (rref) |   non-pivot monomials: total 2  by degree: 0:1 1:1 2:0 3:0 4:0 5:0
+c_N38_n38 D=5: N=38 D=5 dim(V_D)=584934  products=3152573  time=43960s  rows_mem=0.00GB peak=11.97GB  (rref) |   non-pivot monomials: total 1  by degree: 0:1 1:0 2:0 3:0 4:0 5:0
